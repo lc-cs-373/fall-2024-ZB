@@ -1,0 +1,10 @@
+skip WS '\s+'
+
+token TOKEN_KEY 'token'
+token SKIP_KEYWORD 'skip'
+
+token COMMENT '#.*'
+
+token TOKEN_NAME '[A-z]+'
+
+token IDENTIFIER ''[a-zA-Z0-9_\\\.\+\-]*''

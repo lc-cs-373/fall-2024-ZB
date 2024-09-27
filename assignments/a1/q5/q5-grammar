@@ -1,0 +1,8 @@
+skip WS '\s+'
+token I 'I'
+token AM 'am'
+token TAKING 'taking'
+token CSIT '.*'
+token AND 'and'
+%
+<classes> ::= I AM TAKING <CSIT>c1 <CSIT>c2 AND <CSIT>c3

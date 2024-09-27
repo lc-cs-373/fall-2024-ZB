@@ -1,0 +1,11 @@
+QUESTION 3
+Goo(Var var, Silly silly)
+
+QUESTION 4
+Many(List<Rule> ruleList, List<Token> ofList, List<Stuff> stuffList)
+
+QUESTION 5
+Classes(Token c1, Token c2, Token c3)
+
+QUESTION 6
+<var> ::= TOKEN_NAME <foo>

@@ -10,4 +10,6 @@ token RP '\)'
 #
 # Here is a sketch of the first rule. Replace ... with something and
 # add more rules below it.
-<balanced> ::= ... AT
+<balanced> ::= <parens> AT
+<parens>ParensNode ::= LP <parens>p1 RP <parens>p2
+<parens>ParensNull ::= 

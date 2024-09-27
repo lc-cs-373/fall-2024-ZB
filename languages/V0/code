@@ -22,7 +22,7 @@ Rands
         // get all of the expressions in the expression list
         for (Exp e : expList) {
             s += sep + e;
-            sep = ",";   // commas separate the rest of the expressions
+            sep = ", ";   // commas separate the rest of the expressions
         }
         return s;
     }
