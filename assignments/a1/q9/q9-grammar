@@ -1,0 +1,66 @@
+skip WS '\s+'
+
+token TOKEN_KEY 'token'
+token SKIP_KEYWORD 'skip'
+
+token COMMENT '#.+'
+
+token TOKEN_NAME '[A-z]+'
+
+token IDENTIFIER ''[a-zA-Z0-9_\\\.\+\-]*''
+
+%
+
+
+<line>RuleLine ::= <rule>
+<line>CommentLine ::= COMMENT
+
+<rule>RuleSkip ::= <SKIP_KEYWORD> <TOKEN_NAME> <IDENTIFIER>
+<rule>RuleTok ::= <token_key> <IDENTIFIER>
+
+<token_key>TokenWithKey ::= <TOKEN_KEY> <TOKEN_NAME>
+<token_key>TokenNoKey ::= <TOKEN_NAME>
+
+%
+
+CommentLine
+%%%
+public void $run() {
+    
+}
+%%%
+
+RuleLine 
+%%%
+public void $run() {
+    System.out.println(rule.toString());
+}
+%%%
+
+RuleSkip
+%%%
+public String toString() {
+    return "skip " + token_name + " " + identifier;
+}
+%%%
+
+RuleTok
+%%%
+public String toString() {
+    return "token " + token_key.toString() + " " + identifier;
+}
+%%%
+
+TokenWithKey
+%%%
+public String toString() {
+    return "" + token_name;
+}
+%%%
+
+TokenNoKey
+%%%
+public String toString() {
+    return "" + token_name;
+}
+%%%
