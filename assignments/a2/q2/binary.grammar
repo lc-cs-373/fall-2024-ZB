@@ -1,12 +1,65 @@
 # BINARY
 # Lexical specification
+token NL '\n'
+token ZERO '[0]'
+token ONE '[1]'
 
 %
 
 # Syntactic specification
 <start> ::= <bits> NL
 <bits>  **= <bit>
+<bit>BitZero ::= <ZERO>
+<bit>BitOne ::= <ONE>
 
 %
 
 # Semantic specification
+Start
+%%%
+    public void $run() {
+        
+        System.out.println("" + bits.eval());
+    }
+
+%%%
+
+Bits
+%%%
+
+    public int eval() {
+        int sum = 0;
+        if (this.bitList.size() == 0) {
+            throw new PLCCException(
+                "Parse error",
+                "bitList is empty"
+            );
+        }
+        for (Bit b : this.bitList) {
+            
+            //System.out.println(b.eval(b) + "");
+            sum = (sum * 2) + b.eval(b);
+        }
+        return sum;
+    }
+
+%%%
+
+Bit
+%%%
+    public abstract int eval(Bit b);
+%%%
+
+BitZero
+%%%
+    public int eval(Bit b) {
+        return 0;
+    }
+%%%
+
+BitOne
+%%%
+    public int eval(Bit b) {
+        return 1;
+    }
+%%%
